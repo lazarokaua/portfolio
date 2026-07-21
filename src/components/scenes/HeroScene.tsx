@@ -108,7 +108,7 @@ export function HeroScene() {
 
       <p
         ref={subRef}
-        className="mt-8 font-body text-secondary max-w-sm text-center text-sm md:text-base leading-relaxed px-4"
+        className="mt-8 font-body text-[#d1d5db] max-w-sm text-center text-sm md:text-base leading-relaxed px-4"
       >
         {language === "en"
           ? "Building immersive digital experiences. Breaking the grid, pushing the limits of the browser."

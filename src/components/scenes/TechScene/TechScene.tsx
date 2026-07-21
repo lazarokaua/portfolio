@@ -64,7 +64,7 @@ export function TechScene() {
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl uppercase tracking-tighter text-primary">
             {texts.title}
           </h2>
-          <p className="mt-4 font-body text-secondary text-sm max-w-xs">
+          <p className="mt-4 font-body text-[#d1d5db] text-sm max-w-xs">
             {language === "en"
               ? "The core architecture and tools I use to build robust, scalable applications."
               : "A arquitetura central e ferramentas que utilizo para construir aplicações robustas e escaláveis."}

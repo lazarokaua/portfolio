@@ -13,7 +13,7 @@ export default {
         surface: "#0f0f0f",
         "surface-raised": "#1a1a1a",
         primary: "#ffffff",
-        secondary: "#888888",
+        secondary: "#d1d5db", // Light Gray for high visibility
         accent: "#ccff00", // Acid Green
       },
       letterSpacing: {
