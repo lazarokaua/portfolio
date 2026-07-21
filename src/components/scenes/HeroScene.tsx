@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLanguage } from "../Utils/LanguageContext";
+import profilePic from "../../assets/profile.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,13 +79,22 @@ export function HeroScene() {
       ref={containerRef}
       className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-base"
     >
-      <div className="absolute top-8 left-8 flex flex-col gap-1">
-        <span className="font-body text-xs font-bold tracking-widest text-secondary">
-          LÁZARO KAUÃ
-        </span>
-        <span className="font-body text-[10px] uppercase tracking-widest text-accent">
-          {language === "en" ? "Available for work" : "Disponível para freelas"}
-        </span>
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-4 z-50">
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-white/20 hover:border-accent transition-colors">
+          <img 
+            src={profilePic} 
+            alt="Lázaro Kauã" 
+            className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <span className="font-body text-xs font-bold tracking-widest text-secondary">
+            LÁZARO KAUÃ
+          </span>
+          <span className="font-body text-[10px] uppercase tracking-widest text-accent">
+            {language === "en" ? "Available for work" : "Disponível para freelas"}
+          </span>
+        </div>
       </div>
 
       <h1

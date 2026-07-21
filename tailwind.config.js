@@ -14,7 +14,7 @@ export default {
         "surface-raised": "#1a1a1a",
         primary: "#ffffff",
         secondary: "#d1d5db", // Light Gray for high visibility
-        accent: "#ccff00", // Acid Green
+        accent: "#23c6ff", // Electric Cyan
       },
       letterSpacing: {
         tighter: "-0.04em",
