@@ -30,11 +30,11 @@ export function FloatingSocialMenu() {
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       ),
-      url: "https://instagram.com/lazarokaua_",
-      label: "Instagram"
+      url: "mailto:contact.lazarokaua@gmail.com",
+      label: "Email"
     },
     {
       icon: (
@@ -111,7 +111,7 @@ export function FloatingSocialMenu() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-14 h-14 flex items-center justify-center rounded-full bg-accent text-bg shadow-[0_0_20px_rgba(35,198,255,0.4)] hover:shadow-[0_0_30px_rgba(35,198,255,0.6)] hover:scale-110 transition-all duration-300 z-10"
+        className="relative w-14 h-14 flex items-center justify-center rounded-full bg-accent text-bg shadow-[0_0_20px_rgba(204,255,0,0.4)] hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] hover:scale-110 transition-all duration-300 z-10"
         aria-label="Toggle Social Menu"
       >
         <div className="relative w-6 h-6 flex items-center justify-center">

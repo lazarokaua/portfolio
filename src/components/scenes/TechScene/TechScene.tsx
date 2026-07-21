@@ -10,15 +10,33 @@ gsap.registerPlugin(ScrollTrigger);
 const STACKS = [
   {
     category: "Front-end",
-    items: ["React", "Next.js", "TypeScript", "TailwindCSS", "GSAP"],
+    items: [
+      { name: "React", icon: "devicon-react-original" },
+      { name: "Next.js", icon: "devicon-nextjs-plain" },
+      { name: "TypeScript", icon: "devicon-typescript-plain" },
+      { name: "TailwindCSS", icon: "devicon-tailwindcss-original" },
+      { name: "GSAP", icon: "devicon-javascript-plain" },
+    ],
   },
   {
     category: "Back-end",
-    items: ["Java", "Python", "Spring Boot", "Go Lang", "PostgreSQL"],
+    items: [
+      { name: "Java", icon: "devicon-java-plain" },
+      { name: "Python", icon: "devicon-python-plain" },
+      { name: "Spring Boot", icon: "devicon-spring-original" },
+      { name: "Go Lang", icon: "devicon-go-original-wordmark" },
+      { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+    ],
   },
   {
     category: "Dev & Ops",
-    items: ["Docker", "AWS", "Git", "Figma", "Linux"],
+    items: [
+      { name: "Docker", icon: "devicon-docker-plain" },
+      { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark" },
+      { name: "Git", icon: "devicon-git-plain" },
+      { name: "Figma", icon: "devicon-figma-plain" },
+      { name: "Linux", icon: "devicon-linux-plain" },
+    ],
   },
 ];
 
@@ -82,10 +100,11 @@ export function TechScene() {
                 {stack.category}
               </h3>
 
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-4">
                 {stack.items.map((item, i) => (
-                  <li key={i} className="font-body text-lg md:text-xl text-primary">
-                    {item}
+                  <li key={i} className="flex items-center gap-4 font-body text-lg md:text-xl text-primary group cursor-default">
+                    <i className={`${item.icon} text-2xl text-white/40 group-hover:text-accent transition-colors duration-300`} />
+                    <span className="group-hover:translate-x-2 transition-transform duration-300">{item.name}</span>
                   </li>
                 ))}
               </ul>
