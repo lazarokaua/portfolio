@@ -2,7 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply bg-main;
-    @apply font-suisse;
+/* ============================================================
+   Awwwards / Taste Skill Base Reset
+   ============================================================ */
+:root {
+  --color-bg: #050505;
+  --color-text: #ffffff;
+  --color-accent: #ccff00;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis / GSAP smooth scrolling compatibility */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ============================================================
+   Typography Utils
+   ============================================================ */
+.text-massive {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(4rem, 15vw, 15rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.text-sub-massive {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   GSAP Utilities
+   ============================================================ */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* ============================================================
+   Scrollbar Hide (for clean aesthetic)
+   ============================================================ */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================
+   Custom Selection
+   ============================================================ */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ============================================================
+   Marquee Animations
+   ============================================================ */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 25s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 25s linear infinite;
 }

@@ -4,11 +4,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'suisse': ['SuisseIntl-Regular', 'cursive']
+        suisse: ["SuisseIntl-Regular", "sans-serif"],
+        display: ["Anton", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
-        main: "#eeeee4",
-        detail: "#8DAA92"
+        base: "#050505",
+        surface: "#0f0f0f",
+        "surface-raised": "#1a1a1a",
+        primary: "#ffffff",
+        secondary: "#888888",
+        accent: "#ccff00", // Acid Green
+      },
+      letterSpacing: {
+        tighter: "-0.04em",
+        tight: "-0.02em",
       },
     },
   },
