@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 /* ============================================================
-   Awwwards / Taste Skill Base Reset
+   Portfolio Redesign — "Digital Architect" Identity
    ============================================================ */
 :root {
-  --color-bg: #050505;
-  --color-text: #ffffff;
-  --color-accent: #ccff00;
+  --color-bg: #0a0a0f;
+  --color-text: #e2e8f0;
+  --color-accent: #818cf8;
+  --color-accent-deep: #6366f1;
+  --color-accent-hot: #f472b6;
 }
 
 *,
@@ -42,18 +44,19 @@ html.lenis {
    Typography Utils
    ============================================================ */
 .text-massive {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(4rem, 15vw, 15rem);
   line-height: 0.85;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 .text-sub-massive {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(3rem, 8vw, 8rem);
   line-height: 0.9;
   text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 /* ============================================================
@@ -64,14 +67,21 @@ html.lenis {
 }
 
 /* ============================================================
-   Scrollbar Hide (for clean aesthetic)
+   Scrollbar — Thin & Accent-colored
    ============================================================ */
 ::-webkit-scrollbar {
-  display: none;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-deep);
+  border-radius: 2px;
 }
 * {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-deep) var(--color-bg);
 }
 
 /* ============================================================
@@ -83,22 +93,121 @@ html.lenis {
 }
 
 /* ============================================================
-   Marquee Animations
+   Glassmorphism Utility
    ============================================================ */
-@keyframes marquee-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.glass {
+  background: rgba(18, 18, 26, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+.glass-strong {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.animate-marquee-left {
-  animation: marquee-left 25s linear infinite;
+/* ============================================================
+   Gradient Text Utility
+   ============================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.animate-marquee-right {
-  animation: marquee-right 25s linear infinite;
+/* ============================================================
+   Shimmer Text Animation
+   ============================================================ */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #818cf8 25%,
+    #f472b6 50%,
+    #818cf8 75%,
+    #e2e8f0 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% center; }
+  to { background-position: -200% center; }
+}
+
+/* ============================================================
+   Aurora Background
+   ============================================================ */
+.aurora-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15), transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(244, 114, 182, 0.1), transparent 60%),
+              radial-gradient(ellipse at 50% 20%, rgba(129, 140, 248, 0.08), transparent 50%);
+  animation: aurora-drift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(5%, -3%) rotate(2deg) scale(1.05); }
+  66% { transform: translate(-3%, 5%) rotate(-1deg) scale(0.98); }
+  100% { transform: translate(2%, -2%) rotate(1deg) scale(1.02); }
+}
+
+/* ============================================================
+   Subtle Grain Noise Overlay
+   ============================================================ */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================================
+   Glow Border Utility
+   ============================================================ */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #6366f1, #818cf8, #f472b6);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================
+   Card Descriptions & Secondary Text Readability
+   ============================================================ */
+.project-card p {
+  color: #cbd5e1; /* slate-300: contraste nítido em telas escuras */
 }

@@ -5,20 +5,14 @@ import { HeroScene } from "./scenes/HeroScene";
 import { AboutScene } from "./scenes/AboutScene/AboutScene";
 import { ProjectsScene } from "./scenes/ProjectsScene/ProjectsScene";
 import { TechScene } from "./scenes/TechScene/TechScene";
-import { Footer } from "./scenes/Footer";
+import { ContactScene } from "./scenes/ContactScene/ContactScene";
 import { Navigation } from "./Navigation";
 import { FloatingSocialMenu } from "./FloatingSocialMenu";
-import CustomCursor from "./CustomCursor";
-import { LanguageProvider } from "./Utils/LanguageContext";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Portfolio() {
   useEffect(() => {
-    // Lenis is often used with GSAP for smooth scrolling,
-    // but since we are relying on native scroll hijacking
-    // with GSAP ScrollTrigger, we just ensure triggers are refreshed.
     ScrollTrigger.refresh();
 
     return () => {
@@ -34,6 +28,7 @@ export function Portfolio() {
       <AboutScene />
       <ProjectsScene />
       <TechScene />
+      <ContactScene />
     </main>
   );
 }

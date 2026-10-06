@@ -7,14 +7,21 @@ interface ProjectsTexts {
   title: string;
   githubButton: string;
   linkedinButton: string;
-  project1Title: string;
-  project1Description: string;
-  project2Title: string;
-  project2Description: string;
-  project3Title: string;
-  project3Description: string;
-  project4Title: string;
-  project4Description: string;
+  categories: {
+    all: string;
+    frontend: string;
+    backend: string;
+    automation: string;
+  };
+  emptyState: string;
+  project1Title?: string;
+  project1Description?: string;
+  project2Title?: string;
+  project2Description?: string;
+  project3Title?: string;
+  project3Description?: string;
+  project4Title?: string;
+  project4Description?: string;
 }
 
 interface FooterTexts {
@@ -48,6 +55,13 @@ export const translations: Translations = {
       title: "Selected Work",
       githubButton: "View Repository",
       linkedinButton: "View on LinkedIn",
+      categories: {
+        all: "All",
+        frontend: "Front-end",
+        backend: "Back-end",
+        automation: "Automation & Data",
+      },
+      emptyState: "No projects found in this category yet.",
       project1Title: "MedSys Clinical Managment",
       project1Description:
         "A comprehensive healthcare management system built with React 19, TypeScript, and Tailwind CSS 4. Features include Role-Based Access Control, automated PDF medical reports, and an intuitive UI designed from scratch.",
@@ -78,6 +92,13 @@ export const translations: Translations = {
       title: "Trabalhos Selecionados",
       githubButton: "Ver Repositório",
       linkedinButton: "Ver no LinkedIn",
+      categories: {
+        all: "Todos",
+        frontend: "Front-end",
+        backend: "Back-end",
+        automation: "Automação & Dados",
+      },
+      emptyState: "Nenhum projeto encontrado nesta categoria ainda.",
       project1Title: "Dashboard Clínico",
       project1Description:
         "Sistema de gestão clínica completo em React 19, TypeScript e Tailwind 4. Possui RBAC, prontuários integrados e geração automática de laudos em PDF.",

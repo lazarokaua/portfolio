@@ -51,12 +51,10 @@ export function FloatingSocialMenu() {
     () => {
       if (!menuRef.current) return;
       const items = menuRef.current.querySelectorAll(".social-item");
-      const radius = 130; // Distance from center
+      const radius = 130;
 
       if (isOpen) {
         items.forEach((item, i) => {
-          // Calculate angle for a quarter circle (from 180deg to 270deg)
-          // 180 = Left, 270 = Top. Since we are in the bottom right, we spread up and left.
           const angle = (180 + (90 / (links.length - 1)) * i) * (Math.PI / 180);
           const x = Math.cos(angle) * radius;
           const y = Math.sin(angle) * radius;
@@ -98,7 +96,7 @@ export function FloatingSocialMenu() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`social-item absolute w-12 h-12 flex items-center justify-center rounded-full bg-surface border border-white/20 text-white hover:text-accent hover:border-accent hover:bg-surface-raised transition-colors shadow-lg ${
+            className={`social-item absolute w-12 h-12 flex items-center justify-center rounded-full glass text-primary/70 hover:text-accent hover:border-accent/30 hover:shadow-glow transition-all duration-300 ${
               isOpen ? "pointer-events-auto" : "pointer-events-none"
             }`}
             style={{ opacity: 0, transform: "scale(0.5)" }}
@@ -111,19 +109,19 @@ export function FloatingSocialMenu() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-14 h-14 flex items-center justify-center rounded-full bg-accent text-bg shadow-[0_0_20px_rgba(204,255,0,0.4)] hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] hover:scale-110 transition-all duration-300 z-10"
+        className="relative w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-accent-deep to-accent-hot shadow-glow hover:shadow-glow-hot hover:scale-110 transition-all duration-300 z-10"
         aria-label="Toggle Social Menu"
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           <Share2
             size={24}
-            className={`absolute transition-all duration-500 text-black ${
+            className={`absolute transition-all duration-500 text-white ${
               isOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"
             }`}
           />
           <X
             size={24}
-            className={`absolute transition-all duration-500 text-black ${
+            className={`absolute transition-all duration-500 text-white ${
               isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"
             }`}
           />

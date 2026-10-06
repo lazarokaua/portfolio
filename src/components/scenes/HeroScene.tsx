@@ -10,7 +10,6 @@ import intellijPic from "../../assets/svg/IntelliJ_IDEA_icon.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Custom SVG Icons for the Dock
 const PostmanIcon = () => (
   <svg viewBox="0 0 128 128" width="100%" height="100%">
     <path fill="#f37036" d="M113.117 26.066C92.168-1.062 53.191-6.07 26.062 14.883c-27.125 20.953-32.128 59.93-11.175 87.055 20.957 27.124 59.937 32.124 87.058 11.167 27.114-20.953 32.118-59.918 11.172-87.039Zm0 0"></path>
@@ -42,26 +41,23 @@ export function HeroScene() {
     () => {
       if (!containerRef.current || !lidRef.current) return;
 
-      // Start with lid closed
       gsap.set(lidRef.current, { rotateX: -90 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=150%", // Scroll distance to open and stay pinned
+          end: "+=150%",
           scrub: 1,
           pin: true,
         },
       });
 
-      // Open the lid
       tl.to(lidRef.current, {
         rotateX: 0,
-        ease: "none", // Linear mapping to scroll
+        ease: "none",
       });
 
-      // Fade out scroll instruction
       if (instructionRef.current) {
         tl.to(instructionRef.current, {
           opacity: 0,
@@ -77,13 +73,14 @@ export function HeroScene() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-base"
+      className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-base aurora-bg"
     >
-      {/* Background Grid Pattern (matches reference) */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-[1] bg-[linear-gradient(rgba(129,140,248,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(129,140,248,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
 
-      {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none z-0"></div>
+      {/* Floating Orbs */}
+      <div className="absolute top-1/4 left-1/5 w-72 h-72 bg-accent-deep/10 blur-[120px] rounded-full pointer-events-none z-[1] animate-pulse-glow"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-56 h-56 bg-accent-hot/8 blur-[100px] rounded-full pointer-events-none z-[1] animate-pulse-glow" style={{ animationDelay: "1.5s" }}></div>
       
       {/* Macbook Container */}
       <div 
@@ -97,36 +94,47 @@ export function HeroScene() {
           style={{ transformOrigin: "bottom", transformStyle: "preserve-3d" }}
         >
           {/* Front of Lid (Screen) */}
-          <div className="absolute inset-0 bg-black rounded-t-xl md:rounded-t-3xl border-[4px] md:border-[12px] border-neutral-900 overflow-hidden flex flex-col shadow-[0_-20px_50px_rgba(255,255,255,0.05)]" style={{ backfaceVisibility: "hidden" }}>
+          <div className="absolute inset-0 bg-black rounded-t-xl md:rounded-t-3xl border-[4px] md:border-[12px] border-neutral-800 overflow-hidden flex flex-col shadow-[0_-20px_60px_rgba(99,102,241,0.08)]" style={{ backfaceVisibility: "hidden" }}>
             
-            {/* Screen Content - MacOS Lockscreen */}
-            <div className="relative w-full h-full bg-gradient-to-br from-[#1a1c29] via-[#0f111a] to-[#2a1b18] overflow-hidden flex flex-col items-center">
+            {/* Screen Content - Redesigned Lockscreen */}
+            <div className="relative w-full h-full overflow-hidden flex flex-col items-center"
+              style={{
+                background: "radial-gradient(ellipse at 50% 0%, #1e1b4b 0%, #0f0d1a 40%, #0a0a0f 100%)"
+              }}
+            >
+              
+              {/* Animated glow on screen */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-accent-deep/20 blur-[80px] rounded-full pointer-events-none animate-pulse-glow"></div>
               
               {/* Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] md:w-[150px] h-[16px] md:h-[24px] bg-neutral-900 rounded-b-xl z-50 flex items-center justify-center">
-                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white/10 ml-6 md:ml-10"></div>
+                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent/20 ml-6 md:ml-10"></div>
               </div>
 
               {/* Time and Date */}
               <div className="mt-8 md:mt-12 flex flex-col items-center">
-                <span className="text-white/80 text-[10px] md:text-xs font-medium tracking-wide">{date}</span>
-                <span className="text-white text-4xl md:text-7xl font-bold tracking-tight mt-1">{time}</span>
+                <span className="text-primary/60 text-[10px] md:text-xs font-medium tracking-wide font-body">{date}</span>
+                <span className="text-primary text-4xl md:text-7xl font-bold tracking-tight mt-1 font-display">{time}</span>
               </div>
 
               {/* Profile Login */}
               <div className="flex-1 flex flex-col items-center justify-center -mt-4 md:-mt-8">
-                <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white/20 mb-3 md:mb-4 shadow-lg">
-                  <img src={profilePic} alt="Lázaro Kauã" className="w-full h-full object-cover" />
+                {/* Gradient ring around avatar */}
+                <div className="relative w-[72px] h-[72px] md:w-[100px] md:h-[100px] mb-3 md:mb-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-deep via-accent to-accent-hot animate-[spin_6s_linear_infinite] opacity-60"></div>
+                  <div className="absolute inset-[3px] rounded-full overflow-hidden border-2 border-base">
+                    <img src={profilePic} alt="Lázaro Kauã" className="w-full h-full object-cover" />
+                  </div>
                 </div>
-                <h2 className="text-white text-lg md:text-2xl font-semibold">Lázaro Kauã</h2>
-                <p className="text-accent text-xs md:text-sm font-medium mt-1">Creative Developer</p>
-                <div className="mt-4 w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
-                  <Lock size={12} className="text-white/70 md:w-4 md:h-4" />
+                <h2 className="text-primary text-lg md:text-2xl font-semibold font-display">Lázaro Kauã</h2>
+                <p className="gradient-text text-xs md:text-sm font-semibold mt-1 font-body">Creative Developer</p>
+                <div className="mt-4 w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/5 flex items-center justify-center backdrop-blur-md border border-white/10">
+                  <Lock size={12} className="text-accent/70 md:w-4 md:h-4" />
                 </div>
               </div>
 
               {/* MacOS Dock */}
-              <div className="absolute bottom-3 md:bottom-6 flex items-center justify-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
+              <div className="absolute bottom-3 md:bottom-6 flex items-center justify-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 glass rounded-2xl shadow-2xl">
                 <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl overflow-hidden shadow-sm hover:scale-110 transition-transform cursor-pointer flex items-center justify-center bg-transparent">
                   <img src={neovimPic} alt="Neovim" className="w-full h-full object-cover" />
                 </div>
@@ -147,19 +155,21 @@ export function HeroScene() {
         </div>
 
         {/* Base (Keyboard Bottom Part / Lip) */}
-        <div className="absolute -bottom-1 md:-bottom-2 left-1/2 -translate-x-1/2 w-[105%] h-3 md:h-5 bg-gradient-to-b from-[#555] to-[#111] rounded-b-2xl md:rounded-b-[40px] rounded-t-sm z-30 flex items-start justify-center shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
+        <div className="absolute -bottom-1 md:-bottom-2 left-1/2 -translate-x-1/2 w-[105%] h-3 md:h-5 bg-gradient-to-b from-[#444] to-[#111] rounded-b-2xl md:rounded-b-[40px] rounded-t-sm z-30 flex items-start justify-center shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
           {/* Thumb notch */}
-          <div className="w-[15%] h-1 md:h-1.5 bg-[#222] rounded-b-md"></div>
+          <div className="w-[15%] h-1 md:h-1.5 bg-[#1a1a1a] rounded-b-md"></div>
         </div>
       </div>
 
-      {/* Instruction text (disappears on scroll) */}
+      {/* Scroll Indicator */}
       <div 
         ref={instructionRef}
-        className="absolute bottom-10 flex flex-col items-center gap-2 text-neutral-500 text-[10px] md:text-xs tracking-[0.2em] animate-pulse pointer-events-none z-50"
+        className="absolute bottom-10 flex flex-col items-center gap-3 pointer-events-none z-50"
       >
-        <span>SCROLL TO ENTER</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <span className="text-muted text-[10px] md:text-xs tracking-[0.3em] font-body uppercase">Scroll to enter</span>
+        <div className="w-5 h-8 rounded-full border border-muted/40 flex items-start justify-center p-1">
+          <div className="w-1 h-2 rounded-full bg-accent animate-bounce"></div>
+        </div>
       </div>
 
     </section>
