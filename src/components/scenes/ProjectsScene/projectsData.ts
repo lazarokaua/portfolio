@@ -4,6 +4,7 @@ import deviceManagement from "../../../assets/deviceManagement.png";
 import spotify from "../../../assets/spotify.png";
 import inventoryService from "../../../assets/inventoryService.jpg";
 import rpaCubagem from "../../../assets/rpaCubagem.jpg";
+import dividaApi from "../../../assets/dividaApi.jpg";
 
 export type ProjectCategory = "all" | "frontend" | "backend" | "automation";
 
@@ -78,6 +79,23 @@ export const projectsData: ProjectItem[] = [
     description: {
       pt: "Microsserviço de alta performance voltado para gestão de estoque e endereçamento logístico (WMS), desenhado sob princípios de Domain-Driven Design (DDD).",
       en: "High-performance microservice designed for warehouse stock control and logistics addressing (WMS), engineered with Domain-Driven Design (DDD) principles.",
+    },
+  },
+  {
+    id: "divida-api",
+    category: "backend",
+    year: "2026",
+    image: dividaApi,
+    link: "https://github.com/lazarokaua/dividaAPI",
+    linkType: "github",
+    tags: ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "Docker", "Swagger OpenAPI"],
+    title: {
+      pt: "DividaAPI — Gestão de Dívidas",
+      en: "DividaAPI — Debt Management",
+    },
+    description: {
+      pt: "API RESTful para controle e gestão financeira de dívidas desenvolvida com Java 17 e Spring Boot. Implementa validação declarativa de CPF, paginação com Pageable, migrações com Flyway, tratamento global de exceções e documentação OpenAPI/Swagger conteinerizada em Docker.",
+      en: "RESTful API for financial debt management engineered with Java 17 and Spring Boot. Features declarative CPF validation, Pageable pagination, Flyway database migrations, centralized exception handling, and interactive OpenAPI/Swagger documentation backed by Dockerized PostgreSQL.",
     },
   },
   {
